@@ -4,7 +4,7 @@ Adds all arguments to a Python list and saves them to a file.
 """
 
 import sys
-from os.path import exists
+from os import path
 
 # Importing needed functions
 save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
@@ -13,7 +13,7 @@ load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 filename = "add_item.json"
 
 # Check if the file exists
-if not exists(filename):
+if not path.exists(filename):
     my_list = []
 else:
     # Load the existing list from the file
