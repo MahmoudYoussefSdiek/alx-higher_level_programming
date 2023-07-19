@@ -3,6 +3,7 @@
 
 import json
 import csv
+import os
 
 
 class Base:
@@ -111,15 +112,21 @@ class Base:
             return []
 
     @classmethod
-    def save_to_file_csv(cls, list_objs):
-        """
-        Serializes list_objs to CSV file.
+    def load_from_file_csv(cls):
+        """Deserializes in CSV"""
 
-        Args:
-            list_objs (list): The list of instances.
-        """
         filename = cls.__name__ + ".csv"
-        with open(filename, "w", newline="") as file:
-            writer = csv.writer(file)
-            for obj in list_objs:
-                writer.writerow(obj.to_csv_row())
+        list_instances = []
+        if os.path.exists(filename):
+            with open(filename, "r") as file:
+                reader = csv.reader(file)
+                if cls.__name__ == "Rectangle":
+                    fields = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
+                    fields = ["id", "size", "x", "y"]
+                for row in reader:
+                    dict = {}
+                    for i in range(len(fields)):
+                        dict[fields[i]] = int(row[i])
+                    list_instances.append(cls.create(**dict))
+        return list_instances
