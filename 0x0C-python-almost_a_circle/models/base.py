@@ -2,6 +2,7 @@
 """This module defines the Base class"""
 
 import json
+import csv
 
 
 class Base:
@@ -108,3 +109,17 @@ class Base:
                 return instances
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serializes list_objs to CSV file.
+
+        Args:
+            list_objs (list): The list of instances.
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline="") as file:
+            writer = csv.writer(file)
+            for obj in list_objs:
+                writer.writerow(obj.to_csv_row())
