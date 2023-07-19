@@ -55,15 +55,14 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """
-        Returns a dictionary representation of the Rectangle instance.
+        Returns a dictionary representation of the Square instance.
 
         Returns:
-            dict: A dictionary representation of the Rectangle instance.
+            dict: A dictionary representation of the Square instance.
         """
         return {
             'id': self.id,
-            'width': self.width,
-            'height': self.height,
+            'size': self.width,
             'x': self.x,
             'y': self.y
         }
