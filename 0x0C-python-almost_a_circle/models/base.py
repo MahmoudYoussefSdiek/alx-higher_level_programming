@@ -112,6 +112,22 @@ class Base:
             return []
 
     @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes in CSV"""
+
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as file:
+            writer = csv.writer(file)
+            if cls.__name__ == "Rectangle":
+                fields = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                fields = ["id", "size", "x", "y"]
+            if list_objs is not None:
+                for obj in list_objs:
+                    values = [getattr(obj, field) for field in fields]
+                    writer.writerow(values)
+
+    @classmethod
     def load_from_file_csv(cls):
         """Deserializes in CSV"""
 
