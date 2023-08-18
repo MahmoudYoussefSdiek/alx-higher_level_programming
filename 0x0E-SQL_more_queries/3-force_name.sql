@@ -1,4 +1,4 @@
--- Creates the table force_name on your MySQL server.
+-- Creates the table force_name on MySQL server.
 -- id INT
 -- name VARCHAR(256) can’t be null
 
