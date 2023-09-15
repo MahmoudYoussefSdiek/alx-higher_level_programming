@@ -4,7 +4,7 @@ import MySQLdb
 
 """
 This script displays all values in the states table of hbtn_0e_0_usa
-where the name matches the provided argument.
+where the name matches the provided argument, safely from MySQL injections.
 """
 
 if __name__ == "__main__":
