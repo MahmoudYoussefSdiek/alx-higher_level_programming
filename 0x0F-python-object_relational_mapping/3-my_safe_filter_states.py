@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-import sys
-import MySQLdb
-
 """
 This script displays all values in the states table of hbtn_0e_0_usa
 where the name matches the provided argument, safely from MySQL injections.
 """
+import sys
+import MySQLdb
 
 if __name__ == "__main__":
     username = sys.argv[1]
