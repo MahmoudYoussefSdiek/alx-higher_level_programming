@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-import sys
-import MySQLdb
-
 """
 This script displays all values in the states table of hbtn_0e_0_usa
 where the name matches the provided argument.
 """
+import sys
+import MySQLdb
 
 if __name__ == "__main__":
     username = sys.argv[1]
@@ -21,9 +20,8 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     # Execute the query to select states matching the provided name
-    query = """SELECT *
-                 FROM states
-                 WHERE name LIKE '{:s}' ORDER BY id ASC""".format(state_name)
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC".format(
+        state_name)
     cursor.execute(query)
 
     # Fetch all the rows and print them
