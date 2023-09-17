@@ -1,17 +1,19 @@
 #!/usr/bin/python3
 """
-Module to retrieve and display cities from a MySQL database
+return info from both tables (tables 'cities' 'states)
 """
+
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-    # Connect to MySQL server
+
+    # connect to database
     db = MySQLdb.connect(host="localhost",
                          port=3306,
-                         user=sys.argv[1],
-                         passwd=sys.argv[2],
-                         db=sys.argv[3])
+                         user=argv[1],
+                         passwd=argv[2],
+                         db=argv[3])
 
     # create cursor to exec queries using SQL; join two tables for all info
     cursor = db.cursor()
