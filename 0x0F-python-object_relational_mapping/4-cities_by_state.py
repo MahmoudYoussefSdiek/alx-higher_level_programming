@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Module to retrieve and display cities from a MySQL database"""
+"""
+Module to retrieve and display cities from a MySQL database
+"""
 import MySQLdb
 import sys
 
