@@ -17,9 +17,9 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     query = """SELECT cities.id, cities.name, states.name
-                 FROM states
-                 INNER JOIN cities ON states.id = cities.state_id
-                 ORDER BY cities.id ASC"""
+               FROM states
+               INNER JOIN cities ON states.id = cities.state_id
+               ORDER BY cities.id ASC"""
     # Execute the query to retrieve cities with their corresponding state names
     cursor.execute(query)
 
