@@ -33,6 +33,7 @@ if __name__ == "__main__":
     san_francisco = City(name="San Francisco")
     california.cities.append(san_francisco)
     session.add(california)
+    session.add(san_francisco)
 
     # Commit the session to persist the changes to the database
     session.commit()
