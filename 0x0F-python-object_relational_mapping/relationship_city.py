@@ -2,7 +2,7 @@
 """Module to define the City class"""
 
 from sqlalchemy import Column, Integer, String, ForeignKey
-from relationship_state import Base
+from relationship_state import Base, State
 
 
 class City(Base):
