@@ -12,18 +12,16 @@ request(apiUrl, (error, response, body) => {
   if (error) console.error(error);
   const movie = JSON.parse(body);
   const characterUrls = movie.characters;
+  printCharacters(characterUrls, 0);
+});
 
-  const characterCount = characterUrls.length;
-  let printedCount = 0;
-  
-  for (let i = 0; i < characterCount; i++) {
-    const characterUrl = characterUrls[i];
-    request(characterUrl, (error, response, body) => {
-      if (error) console.error(error);
-      const character = JSON.parse(body);
-      console.log(character.name);
-      printedCount++;
-      if (printedCount === characterCount) process.exit();
+function printCharacters (characters, index) {
+    request(characters[index], (error, response, body) => {
+      if (!error) {
+        console.log(JSON.parse(body).name);
+        if (index + 1 < characters.length) {
+          printCharacters(characters, index + 1);
+        }
+      }
     });
   }
-});
