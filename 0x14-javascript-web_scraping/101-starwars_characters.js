@@ -12,14 +12,14 @@ request(apiUrl, (error, response, body) => {
   if (error) console.error(error);
   const movie = JSON.parse(body);
   const characterUrls = movie.characters;
-  let count = 0;
-  characterUrls.forEach(characterUrl => {
+
+  for (let i = 0; i < characterUrls.length; i++) {
+    const characterUrl = characterUrls[i];
     request(characterUrl, (error, response, body) => {
       if (error) console.error(error);
       const character = JSON.parse(body);
       console.log(character.name);
-      count++;
-      if (count === characterUrls.length) process.exit();
+      i++;
     });
-  });
+  }
 });
